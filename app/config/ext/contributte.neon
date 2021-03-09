@@ -1,0 +1,11 @@
+# Extension > Contributte
+#
+extensions:
+    contributte.console: Contributte\Console\DI\ConsoleExtension(%consoleMode%)
+
+contributte.console:
+    url: http://localhost/
+    name: Ataccama Project - Nicolas Baudron
+    version: '0.0.1'
+    catchExceptions: true
+    lazy: true

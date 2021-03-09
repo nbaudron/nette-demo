@@ -1,0 +1,21 @@
+# Extension > Services
+#
+services:
+	# Forms
+	- App\UI\Form\FormFactory
+
+	# Forms Ext
+	- App\UI\Form\Dropzone\DropzoneExt
+
+	# Routing ================
+	routerFactory: App\Router\RouterFactory
+	router: @routerFactory::create
+
+# Modules related
+#
+search:
+    modules:
+        in: %appDir%/Modules
+        classes:
+            - *GetModule
+            - *FormFactory

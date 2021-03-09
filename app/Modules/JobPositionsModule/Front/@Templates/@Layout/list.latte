@@ -1,0 +1,9 @@
+{block jobPositionList}
+    {* Using n:inner-foreach for cleaner code *}
+    <div n:inner-foreach="$jobPositionList as $jobPosition"class="position">
+         <a href="{$jobPosition->getSlug()}">
+            <h4>{$jobPosition->getTitle()}</h4>
+            <div class="job_position_location">{$jobPosition->getLocation()}</div>
+         </a>
+    </div>
+{/block}

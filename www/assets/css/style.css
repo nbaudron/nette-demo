@@ -1,0 +1,162 @@
+/* line 1, D:/Wamp Websites/ataccama/www/assets/sass/style.sass */
+html {
+  font: normal 18px/1.3 Georgia, "New York CE", utopia, serif;
+  color: #666;
+  -webkit-text-stroke: 1px rgba(0, 0, 0, 0);
+  overflow-y: scroll;
+}
+
+/* line 7, D:/Wamp Websites/ataccama/www/assets/sass/style.sass */
+body {
+  background: #3484d2;
+  color: #333;
+  margin: 2em auto;
+  padding: 0 .5em;
+  max-width: 600px;
+  min-width: 320px;
+}
+
+/* line 15, D:/Wamp Websites/ataccama/www/assets/sass/style.sass */
+a {
+  color: #006aeb;
+  padding: 3px 1px;
+}
+
+/* line 19, D:/Wamp Websites/ataccama/www/assets/sass/style.sass */
+a:hover, a:active, a:focus {
+  text-decoration: none;
+}
+
+/* line 22, D:/Wamp Websites/ataccama/www/assets/sass/style.sass */
+#banner {
+  border-radius: 12px 12px 0 0;
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAB5CAMAAADPursXAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAGBQTFRFD1CRDkqFDTlmDkF1D06NDT1tDTNZDk2KEFWaDTZgDkiCDTtpDT5wDkZ/DTBVEFacEFOWD1KUDTRcDTFWDkV9DkR7DkN4DkByDTVeDC9TDThjDTxrDkeADkuIDTRbDC9SbsUaggAAAEdJREFUeNqkwYURgAAQA7DH3d3335LSKyxAYpf9vWCpnYbf01qcOdFVXc14w4BznNTjkQfsscAdU3b4wIh9fDVYc4zV8xZgAAYaCMI6vPgLAAAAAElFTkSuQmCC);
+}
+
+/* line 26, D:/Wamp Websites/ataccama/www/assets/sass/style.sass */
+h1 {
+  font: inherit;
+  color: white;
+  font-size: 50px;
+  line-height: 121px;
+  margin: 0;
+  padding-left: 4%;
+  background-size: 130px auto;
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.9);
+}
+
+/* line 36, D:/Wamp Websites/ataccama/www/assets/sass/style.sass */
+h1.job_position {
+  font-size: 25px;
+}
+
+@media (max-width: 600px) {
+  background: none;
+  font-size: 40px;
+}
+
+/* line 43, D:/Wamp Websites/ataccama/www/assets/sass/style.sass */
+h2 {
+  font: inherit;
+  padding: 1.2em 0;
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+/* line 49, D:/Wamp Websites/ataccama/www/assets/sass/style.sass */
+h3 {
+  font: inherit;
+  padding: 1.2em 0;
+  margin: 0;
+  font-size: 1.20rem;
+}
+
+/* line 55, D:/Wamp Websites/ataccama/www/assets/sass/style.sass */
+img {
+  border: none;
+  float: right;
+  margin: 0 0 1em 3em;
+}
+
+/* line 60, D:/Wamp Websites/ataccama/www/assets/sass/style.sass */
+.job_position_location {
+  padding: 20px 0;
+}
+
+/* line 63, D:/Wamp Websites/ataccama/www/assets/sass/style.sass */
+.container {
+  background-color: white;
+  display: inline-block;
+}
+
+/* line 67, D:/Wamp Websites/ataccama/www/assets/sass/style.sass */
+.form {
+  margin-top: 25px;
+  padding: 0 25px;
+}
+
+/* line 72, D:/Wamp Websites/ataccama/www/assets/sass/style.sass */
+p.bold {
+  font-weight: bold;
+}
+
+/* line 76, D:/Wamp Websites/ataccama/www/assets/sass/style.sass */
+.flash.info {
+  font-weight: bold;
+  padding: 20px;
+  color: darkgreen;
+  text-align: center;
+}
+
+/* line 82, D:/Wamp Websites/ataccama/www/assets/sass/style.sass */
+#content {
+  background: white;
+  border: 1px solid #eff4f7;
+  border-radius: 0 0 12px 12px;
+  padding: 10px 4%;
+  overflow: hidden;
+}
+
+/* line 90, D:/Wamp Websites/ataccama/www/assets/sass/style.sass */
+#dropzoneExt {
+  position: absolute;
+  z-index: 2;
+  height: 150px;
+  cursor: pointer;
+}
+
+/* line 96, D:/Wamp Websites/ataccama/www/assets/sass/style.sass */
+.custom-file-label[for="dropzoneExt"] {
+  border: 2px dashed rgba(0, 0, 0, 0.3);
+  background: white;
+  border-radius: 5px;
+  height: 150px;
+  padding: 54px 54px;
+  cursor: pointer;
+  position: relative;
+  width: 100%;
+  opacity: 1;
+}
+
+/* line 107, D:/Wamp Websites/ataccama/www/assets/sass/style.sass */
+.custom-file-label[for="dropzoneExt"].hover {
+  border-style: solid;
+}
+
+/* line 110, D:/Wamp Websites/ataccama/www/assets/sass/style.sass */
+.custom-file-label[for="dropzoneExt"]::after {
+  content: 'Drop files here or click to upload';
+  position: absolute;
+  color: #808080;
+  background-color: transparent;
+  top: 50%;
+  left: 50%;
+  padding: 0;
+  border-radius: 0;
+  border: none;
+  line-height: normal;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+/*# sourceMappingURL=style.css.map */

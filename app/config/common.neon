@@ -1,0 +1,21 @@
+# Common
+#
+application:
+    errorPresenter: Front:Error
+    mapping:
+        Front: ['App\Presenters\Front', '', '*\*Presenter']
+        Modules: ['App\Modules', '*Module', 'Front\*\*Presenter']
+
+di:
+	export:
+		parameters: no
+		tags: no
+
+tracy:
+    logSeverity: E_ALL
+    strictMode: yes
+
+includes:
+    - ext/contributte.neon
+    - ext/nettrine.neon
+    - app/services.neon

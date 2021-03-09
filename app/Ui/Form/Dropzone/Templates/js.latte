@@ -1,0 +1,184 @@
+<script type="text/javascript">
+
+    // Move Previews Inside the Form
+    $( '.custom-file-label[for="dropzoneExt"]').after( $( '#previews '));
+
+    // Prepare Template
+    let previewNode = document.querySelector('#template');
+    let previewTemplate = previewNode.parentNode.innerHTML;
+    previewNode.parentNode.removeChild(previewNode);
+
+    // Create Preview element
+    let previewElement = document.createElement('div');
+    previewElement.innerHTML = previewTemplate.trim();
+
+    // Select Elements
+    let dataName = previewElement.querySelector('[data-name]');
+    let dataSize = previewElement.querySelector('[data-size]');
+    let removeLink = previewElement.querySelector('[data-remove]');
+
+    // Get Files
+    let file = document.getElementById('dropzoneExt');
+    let regFiles = [];
+
+    // Add - remove class in Label
+    file.ondragenter  = function () { $('.custom-file-label[for="dropzoneExt"]').addClass('hover'); return false; };
+    file.ondragleave = function () { $('.custom-file-label[for="dropzoneExt"]').removeClass('hover'); return false; };
+
+    // Submit
+    let submit = document.querySelector('input[type="submit"]');
+
+    /**
+     * Returns a nicely formatted filesize
+     * @param size
+     */
+    function filesize(size) {
+
+        let selectedSize = 0;
+        let selectedUnit = "b";
+        let fileSizeBase = 1000;
+
+        let dictFileSizeUnits = { tb: "TB", gb: "GB", mb: "MB", kb: "KB", b: "b" };
+
+        if (size > 0) {
+            let units = ['tb', 'gb', 'mb', 'kb', 'b'];
+
+            for (let i = 0; i < units.length; i++) {
+                let unit = units[i];
+                let cutoff = Math.pow(fileSizeBase, 4 - i) / 10;
+
+                if (size >= cutoff) {
+                    selectedSize = size / Math.pow(fileSizeBase, 4 - i);
+                    selectedUnit = unit;
+                    break;
+                }
+            }
+            selectedSize = Math.round(10 * selectedSize) / 10; // Cutting of digits
+        }
+
+        return "<strong>".concat(selectedSize, "</strong> ").concat(dictFileSizeUnits[selectedUnit]);
+    }
+
+    /**
+     * Prepare List of Files for the Input
+     * @param files
+     */
+    function FileListItems (files) {
+        let b = new ClipboardEvent("").clipboardData || new DataTransfer()
+        for (let i = 0, len = files.length; i<len; i++) b.items.add(files[i])
+        return b.files
+    }
+
+    /**
+     * Prepare and Display Files list
+     * @param file
+     */
+    function previewList (file) {
+
+        var removeFileEvent = function removeFileEvent(e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            regFiles = jQuery.grep(regFiles, function(value) {
+                return value != file;
+            });
+
+            preview.removeChild(row);
+        };
+
+        let dataNameC   = dataName.cloneNode(true);
+        let dataSizeC   = dataSize.cloneNode(true);
+        let removeLinkC = removeLink.cloneNode(true);
+
+        let row = document.createElement('div');
+        row.classList.add('row', 'dz-success', 'table-success', 'dz-complete');
+
+        let fileName = document.createTextNode(file.name);
+        dataNameC.appendChild(fileName);
+
+        let prepareFileSize = filesize(file.size);
+        let fileSize = document.createRange().createContextualFragment(prepareFileSize);
+        dataSizeC.appendChild(fileSize);
+
+        let preview = document.querySelector('#previews');
+
+        let fileNameTest = document.createTextNode('Remove File');
+        removeLinkC.appendChild(fileNameTest);
+
+        let col = document.createElement('div');
+        col.classList = 'order-4 order-lg-3 col-auto ml-auto text-truncate';
+        col.appendChild(removeLinkC);
+
+        removeLinkC.addEventListener("click", removeFileEvent);
+
+        row.appendChild(dataNameC);
+        row.appendChild(dataSizeC);
+        row.appendChild(col);
+
+        preview.appendChild( row);
+    }
+
+    // Handel the List of Change in Input
+    file.addEventListener('change', function() {
+        if(this && this.value) {
+
+            // List Selected Files
+            let selectedFiles = [...this.files];
+
+            //Make Unique regFiles Array
+            Array.prototype.unique = function() {
+                let a = this.concat();
+                for(let i=0; i<a.length; ++i) {
+                    for(let j=i+1; j<a.length; ++j) {
+                        if(a[i].name === a[j].name){
+                            for(let k=1; k<selectedFiles.length; ++k) {
+                                if(selectedFiles[i].name === a[i].name)
+                                    selectedFiles.splice(k, 1);
+                                a.splice(j--, 1);
+                            }
+
+                        }
+                    }
+                }
+                return a;
+            };
+
+            // Check Max Files
+            if(regFiles.length + selectedFiles.length > {$maxFiles}) {
+                alert('You exceed the maximum of {$maxFiles} files!');
+                return;
+            }
+
+            // Check Max Size && Files Type
+            var maxFileSize = {$maxFilesSize} * 1024 * 1024;
+
+            for (let i=0; i<selectedFiles.length; i++) {
+                // Check Max Size
+                if (selectedFiles[i].size > maxFileSize) {
+                    alert("File '" + selectedFiles[i].name + "' exceed {$maxFilesSize} MB!");
+                    selectedFiles.splice( $.inArray(selectedFiles[i],selectedFiles) ,1 );
+                }
+
+                // Check Files Type
+                var filesType = {$filesType};
+                if ($.inArray(selectedFiles[i].type, filesType) === -1) {
+                    alert("Only formats are allowed : " + filesType.join(', '));
+                    selectedFiles.splice( $.inArray(selectedFiles[i],selectedFiles) ,1 );
+                }
+            }
+
+            // Update Files List
+            regFiles = regFiles.concat(selectedFiles).unique();
+
+            // Preview List of Files
+            for (let i=0; i<selectedFiles.length; i++) {
+                previewList(selectedFiles[i]);
+            }
+        }
+
+        // Update Input With File list
+        submit.addEventListener('click', function() {
+            file.files = new FileListItems(regFiles);
+        });
+    });
+</script>

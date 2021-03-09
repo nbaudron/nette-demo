@@ -1,0 +1,9 @@
+# Host Config
+parameters:
+
+	# Database
+	database:
+		host: localhost
+		dbname: ataccama
+		user: root
+		password:

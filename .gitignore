@@ -1,1 +1,5 @@
 app/config/local.neon
+vendor
+temp
+.SynologyWorkingDirectory
+.idea

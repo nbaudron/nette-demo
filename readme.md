@@ -1,7 +1,14 @@
-Ataccama Job Positions
-=================
+Job Positions Form with Dropbox style input
+===========================================
 
 **Author**: Nicolas BAUDRON
+
+This is a simple pre-configured application using the Nette.
+it's content is a job list with form for each of them. The form is completed with a Dropbox style input for files (DOC - PDF - JPG) with 5mb limitation and 5 files max.
+
+The form is then saved into the database.
+
+Debug enabled.
 
 Requirements
 ------------

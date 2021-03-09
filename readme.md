@@ -1,5 +1,5 @@
-Job Positions Form with Dropbox style input
-===========================================
+Form with Dropbox
+=================
 
 **Author**: Nicolas BAUDRON
 

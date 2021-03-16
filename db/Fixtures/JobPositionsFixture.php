@@ -24,7 +24,7 @@ class JobPositionsFixture implements FixtureInterface, OrderedFixtureInterface
 
         $jobPositionsSamples =  Json::decode($jsonFile);
 
-        foreach ($jobPositionsSamples[2]->data as $jobPositionData) {
+        foreach ($jobPositionsSamples[1]->data as $jobPositionData) {
             $jobPosition = new JobPosition();
 
             $jobPosition->setTitle($jobPositionData->title);

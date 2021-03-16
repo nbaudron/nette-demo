@@ -4,6 +4,6 @@ parameters:
 	# Database
 	database:
 		host: localhost
-		dbname: ataccama
+		dbname: netteDemo
 		user: root
 		password:

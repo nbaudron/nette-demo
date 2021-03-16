@@ -1,8 +1,8 @@
 {
-	"name": "ataccama/jobposition",
-	"description": "Ataccama app with modules.",
+	"name": "nette/demo",
+	"description": "Demo Nette App With Modules.",
 	"keywords": [
-		"ataccama",
+		"demo",
 		"php",
 		"nette",
 		"planette",
@@ -56,6 +56,7 @@
 	"minimum-stability": "stable",
 	"prefer-stable": true,
 	"require-dev": {
+		"ninjify/qa": "^0.12",
 		"phpstan/phpstan": "^0.12.36",
 		"phpstan/extension-installer": "^1.0",
 		"phpstan/phpstan-nette": "^0.12.8",

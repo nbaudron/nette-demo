@@ -1,6 +1,6 @@
 app/config/config.local.neon
 vendor
-temp
+temp/*
 .SynologyWorkingDirectory
 .idea
 .desktop.ini

@@ -6,6 +6,6 @@ extensions:
 contributte.console:
     url: http://localhost/
     name: Nette Demo Project - Nicolas Baudron
-    version: '0.0.1'
+    version: '0.0.2'
     catchExceptions: true
     lazy: true
